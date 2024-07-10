@@ -19,14 +19,15 @@ login.addEventListener("submit", async (e) => {
     .then((res) => {   
         console.log(res);
         if (res === "Email ou mot de passe incorrect") {
-            messageErreur.textContent = res;
+            messageErreur.textContent = res.message;
             messageErreur.style.color = "red";
         }
-        messageErreur.textContent = res;
+        messageErreur.textContent = res.message;
         messageErreur.style.color = "green";
+        let {password, ...rest} = res
 
         setTimeout(()=>{
-          localStorage.setItem("session", res.id)
+          localStorage.setItem("session", JSON.stringify(rest))
             window.location.href="./dashboard.html"
         },2000) 
       

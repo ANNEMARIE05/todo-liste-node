@@ -1,3 +1,4 @@
+let deconnect = document.querySelector(".deconnect")
 document.addEventListener('DOMContentLoaded',()=>{
     let getLocalSt = localStorage.getItem("session");
     let passName = location.href;
@@ -8,4 +9,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     else if(!getLocalSt && passName.endsWith("dashboard.html")){
         location.href = "./index.html";
     }
+    deconnect.addEventListener("click", ()=>{
+        localStorage.removeItem("session")
+        location.href = "./index.html" 
+    })
 });
